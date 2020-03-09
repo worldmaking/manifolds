@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/worldmaking/manifolds#readme",
   "dependencies": {
-    "@slack/webhook": "^5.0.3"
+    "@commitlint/read": "^8.3.4",
+    "@slack/webhook": "^5.0.3",
+    "slack-webhook": "^1.0.0"
   }
 }
