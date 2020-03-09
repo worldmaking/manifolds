@@ -7,6 +7,6 @@ const webhook = new IncomingWebhook(url);
 // Send the notification
 (async () => {
   await webhook.send({
-    text: 'I\'ve got news for you...',
+    text: 'pre-commit caught by hook.js',
   });
 })(); 
