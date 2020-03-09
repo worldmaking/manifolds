@@ -1,0 +1,20 @@
+fsaa 1
+framerate 30
+previewframerate 15
+number_of_screens 1
+screenratio 4:3
+screendivider 0
+preview_width 320
+menubar 1
+cursor_off 0
+preview 1
+fullscreen 0
+autostart off 0
+cuelist cuelist.txt
+drawcorners 1
+master 1
+include_sources 1
+autosource 1
+xfadelocal 0
+sourcebank "V V V V V V S M"
+

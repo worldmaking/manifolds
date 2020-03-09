@@ -1,0 +1,18 @@
+{
+	"pattrstorage" : 	{
+		"name" : "gui",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"data" : 				{
+					"gui_divider" : [ 149 ],
+					"gui_tab" : [ 0 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}
