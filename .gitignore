@@ -1,3 +1,4 @@
-    # pesky Ds Store!
-    .DS_Store
-    */.DS_Store
+# pesky Ds Store!
+.DS_Store
+*/.DS_Store
+*.code-workspace
