@@ -1,16 +1,24 @@
 #!/usr/bin/env node
 
-const http = require('http');
+//const http = require('http');
+const https = require('https');
 const url = require('url');
 const fs = require("fs");
 const path = require("path");
 const os = require("os");
 const assert = require("assert");
 
+const options = {
+  key: fs.readFileSync('server-key.pem'), 
+  cert: fs.readFileSync('server-crt.pem'), 
+  ca: fs.readFileSync('ca-crt.pem'),  
+  requestCert: true, 
+  rejectUnauthorized: false
+};
+
 const express = require('express');
 const WebSocket = require('ws');
 const { vec2, vec3, vec4, quat, mat3, mat4 } = require("gl-matrix");
-
 
 const project_path = process.cwd();
 const server_path = __dirname;
@@ -22,8 +30,8 @@ app.get('/', function(req, res) {
 	res.sendFile(path.join(client_path, 'index.html'));
 });
 //app.get('*', function(req, res) { console.log(req); });
-const server = http.createServer(app);
-// add a websocket service to the http server:
+//const server = http.createServer(app);
+const server = https.createServer(options, app);
 const wss = new WebSocket.Server({ 
 	server: server,
 	maxPayload: 1024 * 1024, 
@@ -39,6 +47,7 @@ function send_all_clients(msg, ignore) {
 		};
 	});
 }
+
 
 // whenever a client connects to this websocket:
 let sessionId = 0;
@@ -78,6 +87,7 @@ wss.on('connection', function(ws, req) {
 			//console.log(new Float32Array(ab));
 
 		} else {
+
 			if (msg == "getData") {
 				// reply:
 				
@@ -92,9 +102,11 @@ wss.on('connection', function(ws, req) {
 				console.log("hi")
 
 			} else if (msg == "sendHaptics_back") {
+
 				console.log("hi")
 				
 			} else {
+
 				console.log("received message from client:", id, msg);
 			}
 		}
@@ -114,5 +126,5 @@ server.listen(8080, function() {
 	console.log(`\n\n\n****************`);
 	console.log(`****************`);
 	console.log(`server listening`);
-	console.log(`client view on http://localhost:${server.address().port}/index.html\n\n`);
+	console.log(`client view on https://localhost:${server.address().port}/index.html\n\n`);
 });
