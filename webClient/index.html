@@ -19,7 +19,10 @@ const ws = new WebSocket('ws:' + origin + ':8080');
 
 // Connection opened
 ws.addEventListener('open', function (event) {
-    ws.send('Hello Server!');
+    ws.send(JSON.stringify({
+      cmd: 'newClient',
+      data: 'hello'
+    }));
 });
 
 // Listen for messages
@@ -30,8 +33,14 @@ ws.addEventListener('message', function (event) {
 
 $( "#target" ).mousemove(function( event ) {
   
-  msg = event.pageX + ", " + event.pageY;
-  ws.send(msg)
+  msg = {
+    data: {
+      mouseX: event.pageX,
+      mouseY: event.pageY
+    },
+    cmd: 'mouseState'
+  }
+  ws.send(JSON.stringify(msg))
   // $( "#log" ).append( "<div>" + msg + "</div>" );
 });
 
