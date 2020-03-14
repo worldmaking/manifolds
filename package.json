@@ -2,7 +2,7 @@
   "name": "manifolds",
   "version": "0.0.1",
   "description": "",
-  "main": "hook.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,10 +19,12 @@
   "dependencies": {
     "@commitlint/read": "^8.3.4",
     "@slack/webhook": "^5.0.3",
+    "express": "^4.17.1",
     "hookcord": "^2.0.2",
     "hostname": "^1.0.4",
     "last-commit-message": "^1.0.0",
     "slack-webhook": "^1.0.0",
-    "webhook-discord": "^3.5.1"
+    "webhook-discord": "^3.5.1",
+    "ws": "^7.2.3"
   }
 }

@@ -1,0 +1,27 @@
+<html>
+<head>
+  <title>Hello World!</title>
+</head>
+<body>
+
+</body>
+<script>
+let origin = window.location.origin.split('//')[1].split(':')[0]; // Returns base URL (i.e. localhost)
+console.log(origin)
+// Create WebSocket connection.
+const ws = new WebSocket('ws:' + origin + ':8080');
+
+// Connection opened
+ws.addEventListener('open', function (event) {
+    ws.send('Hello Server!');
+});
+
+// Listen for messages
+ws.addEventListener('message', function (event) {
+    console.log('Message from server ', event.data);
+});
+
+
+
+</script>
+</html>
