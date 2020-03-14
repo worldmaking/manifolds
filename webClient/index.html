@@ -32,11 +32,14 @@ ws.addEventListener('message', function (event) {
 
 
 $( "#target" ).mousemove(function( event ) {
-  
+  let width = window.innerWidth;
+  let height = window.innerHeight;
   msg = {
     data: {
       mouseX: event.pageX,
-      mouseY: event.pageY
+      mouseY: event.pageY,
+      width: width,
+      height: height
     },
     cmd: 'mouseState'
   }

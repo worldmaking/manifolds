@@ -23,6 +23,7 @@
     "hookcord": "^2.0.2",
     "hostname": "^1.0.4",
     "last-commit-message": "^1.0.0",
+    "reconnecting-websocket": "^4.4.0",
     "slack-webhook": "^1.0.0",
     "webhook-discord": "^3.5.1",
     "ws": "^7.2.3"
