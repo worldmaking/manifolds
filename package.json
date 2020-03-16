@@ -19,6 +19,7 @@
   "dependencies": {
     "@commitlint/read": "^8.3.4",
     "@slack/webhook": "^5.0.3",
+    "chokidar": "^3.3.1",
     "express": "^4.17.1",
     "hookcord": "^2.0.2",
     "hostname": "^1.0.4",

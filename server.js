@@ -1,6 +1,14 @@
 const WebSocket = require('ws');
 const express = require('express');
 const app = express();
+const fs = require('fs')
+const chokidar = require('chokidar');
+const path = __dirname
+const watcher = chokidar.watch(path.join(path, '/data'), {
+  ignored: /(^|[\/\\])\../, // ignore dotfiles
+  persistent: true
+});
+
 
 // list of users
 let CLIENTS=[];
@@ -48,3 +56,4 @@ wss.broadcast = function broadcast(msg) {
       client.send(msg);
    });
 };
+
