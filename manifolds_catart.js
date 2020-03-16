@@ -43,6 +43,7 @@ rws.addEventListener('message', (message) => {
 
 });
 
+
 max.addHandler('analysisProgress', (percent) =>{
   corpus.analysis.progress = percent
   if (percent === 100. || percent === 100){
