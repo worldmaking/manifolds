@@ -1,6 +1,8 @@
 # Getting Started
 
-This project employs three methods together (Gym-retro, GPT-2, NEAT-Python). 
+***The project will first push to https://github.com/reginalluna/Retro_GPTXRNN_Neat
+
+***This project employs three methods together (Gym-retro, GPT-2, NEAT-Python).     23 Mar, 2020
 
 Supported platforms:
 - Windows7,810
