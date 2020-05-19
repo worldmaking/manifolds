@@ -25,6 +25,7 @@
     "last-commit-message": "^1.0.0",
     "reconnecting-websocket": "^4.4.0",
     "slack-webhook": "^1.0.0",
+    "three": "^0.116.1",
     "webhook-discord": "^3.5.1",
     "ws": "^7.2.3"
   }
