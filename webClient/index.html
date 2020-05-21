@@ -1,51 +1,92 @@
 <html>
+
 <head>
   <title>Hello World!</title>
-  <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-</head>
-<body id='target'>
+  <style>
+    body {
+      margin: 0;
+    }
 
+    canvas {
+      display: block;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id='target'>
+    <script>
+      // Create the scene
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+      var renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // Add geometry
+      var geometry = new THREE.BoxGeometry();
+      var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+      var cube = new THREE.Mesh(geometry, material);
+      scene.add(cube);
+
+      camera.position.z = 5;
+
+      // Render the scene
+      function animate() {
+        requestAnimationFrame(animate);
+
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+
+        renderer.render(scene, camera);
+      }
+      animate();
+
+    </script>
+
+  </div>
 </body>
 <script>
 
 
-let origin = window.location.origin.split('//')[1].split(':')[0]; // Returns base URL (i.e. localhost)
-console.log(origin)
-// Create WebSocket connection.
-const ws = new WebSocket('ws:' + origin + ':8080');
+  let origin = window.location.origin.split('//')[1].split(':')[0]; // Returns base URL (i.e. localhost)
+  console.log(origin)
+  // Create WebSocket connection.
+  const ws = new WebSocket('ws:' + origin + ':8080');
 
-// Connection opened
-ws.addEventListener('open', function (event) {
+  // Connection opened
+  ws.addEventListener('open', function (event) {
     ws.send(JSON.stringify({
       cmd: 'newClient',
       data: 'hello'
     }));
-});
+  });
 
-// Listen for messages
-ws.addEventListener('message', function (event) {
+  // Listen for messages
+  ws.addEventListener('message', function (event) {
     console.log('Message from server ', event.data);
-});
+  });
 
 
-$( "#target" ).mousemove(function( event ) {
-  let width = window.innerWidth;
-  let height = window.innerHeight;
-  msg = {
-    data: {
-      mouseX: event.pageX,
-      mouseY: event.pageY,
-      width: width,
-      height: height
-    },
-    cmd: 'mouseState'
-  }
-  ws.send(JSON.stringify(msg))
-  // $( "#log" ).append( "<div>" + msg + "</div>" );
-});
+  $("#target").mousemove(function (event) {
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    msg = {
+      data: {
+        mouseX: event.pageX,
+        mouseY: event.pageY,
+        width: width,
+        height: height
+      },
+      cmd: 'mouseState'
+    }
+    ws.send(JSON.stringify(msg))
+    // $( "#log" ).append( "<div>" + msg + "</div>" );
+  });
 
 </script>
+
 </html>
